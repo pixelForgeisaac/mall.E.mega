@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+nav {
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f4a261;
+}
+
+.search-cart {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+.cart {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #f4a261;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Sections */
+section {
+    padding: 3rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#home {
+    background: url('placeholder-home.jpg') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#home h1, #home p {
+    position: relative;
+    z-index: 1;
+}
+
+#home h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+#about, #shopping, #contact {
+    background: #a9a8f9;
+    box-sizing: border-box;
+    padding: 2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Shopping Section */
+.shoe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.shoe-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 1rem;
+    transition: transform 0.3s;
+}
+
+.shoe-card:hover {
+    transform: translateY(-5px);
+}
+
+.shoe-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.shoe-card h3 {
+    margin: 0.5rem 0;
+}
+
+.shoe-card p {
+    color: #555;
+}
+
+.shoe-card button {
+    background: #f4a261;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.3s;
+    font-weight: bold;
+}
+
+.shoe-card button:hover {
+    background: #e76f51;
+}
+
+/* Contact Section */
+.contact-info {
+    text-align: center;
+    border-radius: 200px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-buttons a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.social-buttons a:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp { background: #25D366; }
+.x { background: #000; }
+.facebook { background: #3b5998; }
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        margin: 0.5rem;
+    }
+
+    .search-bar {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    #home h1 {
+        font-size: 2rem;
+    }
+
+    .shoe-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .shoe-card img {
+        height: 150px;
+    }
+
+    .social-buttons a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+        width: 100%;
+    }
+}
