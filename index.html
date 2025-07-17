@@ -3,94 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Megamall Shoes - Eastleigh</title>
+    <title>Isaac's Store - Quality Products for Everyone</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Megamall Shoes</div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#shopping">Shopping</a>
-                <a href="#contact">Contact</a>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1>Isaac's Store</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#shoes" class="nav-link">Shoes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#electronics" class="nav-link">Electronics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#groceries" class="nav-link">Groceries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#jerseys" class="nav-link">Jerseys</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#cart" class="nav-link cart-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
-            <div class="search-cart">
-                <input type="text" id="search-bar" class="search-bar" placeholder="Search shoes...">
-                <div class="cart">
-                    <span>🛒</span>
-                    <span class="cart-count" id="cart-count">0</span>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Isaac's Store</h1>
+            <p>Your one-stop shop for shoes, electronics, groceries, and football jerseys</p>
+            <button class="cta-button" onclick="scrollToSection('shoes')">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="search-filter">
+        <div class="container">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search products...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filter-container">
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="shoes">Shoes</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="groceries">Groceries</option>
+                    <option value="jerseys">Football Jerseys</option>
+                </select>
+                <select id="priceFilter">
+                    <option value="all">All Prices</option>
+                    <option value="0-50">$0 - $50</option>
+                    <option value="51-100">$51 - $100</option>
+                    <option value="101-200">$101 - $200</option>
+                    <option value="201+">$201+</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <main class="main-content">
+        <!-- Shoes Section -->
+        <section id="shoes" class="product-section">
+            <div class="container">
+                <h2 class="section-title">Shoes Collection</h2>
+                <div class="products-grid" id="shoes-grid">
+                    <!-- Shoes products will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Electronics Section -->
+        <section id="electronics" class="product-section">
+            <div class="container">
+                <h2 class="section-title">Electronics</h2>
+                <div class="products-grid" id="electronics-grid">
+                    <!-- Electronics products will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Groceries Section -->
+        <section id="groceries" class="product-section">
+            <div class="container">
+                <h2 class="section-title">Fresh Groceries</h2>
+                <div class="products-grid" id="groceries-grid">
+                    <!-- Groceries products will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Football Jerseys Section -->
+        <section id="jerseys" class="product-section">
+            <div class="container">
+                <h2 class="section-title">Football Jerseys</h2>
+                <div class="products-grid" id="jerseys-grid">
+                    <!-- Jerseys products will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Shopping Cart</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems"></div>
+                <div class="cart-total">
+                    <h3>Total: $<span id="cartTotal">0.00</span></h3>
+                </div>
+                <div class="cart-actions">
+                    <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
+                    <button class="btn btn-secondary" id="clearCartBtn">Clear Cart</button>
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
 
-    <!-- Home Section -->
-    <section id="home">
-        <h1>Welcome to Megamall Shoes</h1>
-        <p>Your one-stop shop for all types of shoes in Eastleigh.</p>
-        <img src="shoe store/mall.webp" alt="Megamall Shoes" class="hero-image">
-        <p>Explore our latest collection and find the perfect pair for any occasion.</p>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Us</h2>
-        <p>Megamall Shoes is Eastleigh's premier shoe store, offering a wide variety of footwear for all ages and styles. From sneakers to formal shoes, we have it all at affordable prices.</p>
-    </section>
-
-    <!-- Shopping Section -->
-    <section id="shopping">
-        <h2>Shop Our Collection</h2>
-        <div class="shoe-grid" id="shoe-grid">
-            <div class="shoe-card" data-name="Sneakers">
-                <img src="shoe store/sneakerss.avif" alt="Sneakers">
-                <h3>Sneakers</h3>
-                <p>KES 2,500</p>
-                <button onclick="addToCart('Sneakers', 2500)">Add to Cart</button>
-            </div>
-            <div class="shoe-card" data-name="Formal Shoes">
-                <img src="shoe store/foemal shoes.webp" alt="Formal Shoes">
-                <h3>Formal Shoes</h3>
-                <p>KES 3,500</p>
-                <button onclick="addToCart('Formal Shoes', 3500)">Add to Cart</button>
-            </div>
-            <div class="shoe-card" data-name="Boots">
-                <img src="shoe store/boots.avif" alt="Boots">
-                <h3>Boots</h3>
-                <p>KES 4,000</p>
-                <button onclick="addToCart('Boots', 4000)">Add to Cart</button>
-            </div>
-            <div class="shoe-card" data-name="Sandals">
-                <img src="shoe store/sandals.avif" alt="Sandals">
-                <h3>Sandals</h3>
-                <p>KES 1,800</p>
-                <button onclick="addToCart('Sandals', 1800)">Add to Cart</button>
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body" id="productModalBody">
+                <!-- Product details will be dynamically loaded here -->
             </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <div class="contact-info">
-            <p>Visit us at Megamall, Eastleigh, Nairobi</p>
-            <p>Email: info@megamallshoes.com</p>
-            <p>Phone: +254 746 636 025</p>
-            <div class="social-buttons">
-                <a href="https://wa.me/+254746636025" target="_blank" class="whatsapp">WhatsApp</a>
-                <a href="https://x.com/megamallshoes" target="_blank" class="x">X</a>
-                <a href="https://facebook.com/megamallshoes" target="_blank" class="facebook">f</a>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
-    <footer>
-        <p>© 2025 Megamall Shoes. All rights reserved.|Designed by PixelForge Isaac Webdesigners</p>
-        <p>Privacy policy| Cookie Policy| Terms& Conditions</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Isaac's Store</h3>
+                    <p>Quality products for every need. From shoes to electronics, groceries to sports wear.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#shoes">Shoes</a></li>
+                        <li><a href="#electronics">Electronics</a></li>
+                        <li><a href="#groceries">Groceries</a></li>
+                        <li><a href="#jerseys">Jerseys</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@isaacsstore.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Main St, City, State 12345</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Isaac's Store. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
